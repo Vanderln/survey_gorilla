@@ -1,23 +1,31 @@
 <div class="container">
 
-<!-- AUTHOR COLUMN -->
-<div class="author">
-  <!-- CREATE NEW SURVEY -->
-  <form action="/create" method="get">
-    <input type='submit'>
-  </form>
- <!-- VIEW YOUR SURVEYS -->
-  <table>
-    <% current_user.surveys.each do |survey| %>
-      <tr>
-        <%= erb :_survey_render, :layout => false, :locals => { survey: survey }  %>
-      </tr>
-    <% end %>
-  </table>
-</div>
+  <!-- AUTHOR COLUMN -->
+  <div class="author">
+    <!-- CREATE NEW SURVEY -->
+    <form action="/create" method="get">
+      <input type='submit'>
+    </form>
+   <!-- VIEW SURVEYS AUTHORED -->
+    <table>
+      <% current_user.surveys.each do |survey| %>
+        <tr>
+          <%= erb :_survey_render, :layout =>  false, :locals => { survey: survey } %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
-<!-- RESPONDENT COLUMN -->
-<div class="respondent">
-  
-</div>
+  <!-- RESPONDENT COLUMN -->
+  <div class="respondent">
+    <!-- VIEW SURVEYS TO TAKE -->
+    <table>
+      <% @surveys.each do |survey| %>
+        <tr>
+          <%= erb :_survey_render, :layout =>  false, :locals => { survey: survey } %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
 </div>

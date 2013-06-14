@@ -22,6 +22,7 @@ get '/users/:user_id' do
   # validate user is logged in?
   # redirect to login if not
   # if logged in render current session user page
+  @surveys = Survey.order('updated_at DESC')
   erb :user_page
 end
 
