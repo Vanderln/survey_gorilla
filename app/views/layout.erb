@@ -5,15 +5,16 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/application.css">
-
-  <title>Survey Beast</title>
+<script src="//use.edgefonts.net/poiret-one.js"></script>
+<script src="//use.edgefonts.net/muli:n3,n4.js"></script>
+  <title>Survey Octopus</title>
 </head>
 <body>
   <nav>
-    <span id="brand"><a href="/">Survey Beast</a></span>
+    <span class="brand"><img src="/img/octopus.jpg" height="80" border="0"><a href="/">Survey Octopus</a></span>
     <ul id="session-controls">
       <% unless logged_in? %>
-      <li><a href="/">Login</a></li>
+        <li><a href="/">Login</a></li>
       <% end %>
       <% if logged_in? %>
         <li><a href="/logout">Logout</a></li>

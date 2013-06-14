@@ -3,7 +3,7 @@
 end
 
 20.times do 
-  Survey.create(:title => Faker::Lorem.word, :author => User.find(1 + rand(10)))
+  Survey.create(:title => Faker::Lorem.sentence((1..4).to_a.sample), :author => User.find(1 + rand(10)))
 end
 
 25.times do

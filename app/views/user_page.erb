@@ -1,13 +1,7 @@
 <div class="container">
-
-  <!-- AUTHOR COLUMN -->
-  <h1>AUTHOR</h1>
-  <div class="author">
-    <!-- CREATE NEW SURVEY -->
-    <form action="/create" method="get">
-      <input type='submit' value="create new survey">
-    </form>
-   <!-- VIEW SURVEYS AUTHORED -->
+ <!-- AUTHOR COLUMN -->
+ <div class="author_column">
+  <h1>My surveys</h1>
     <table>
       <% @surveys.find_all_by_user_id(current_user.id).each do |survey| %>
         <tr>
@@ -15,11 +9,14 @@
         </tr>
       <% end %>
     </table>  
+    <form action="/create" method="get">
+      <input type='submit' value="Create">
+    </form>
   </div>
 
   <!-- RESPONDENT COLUMN -->
-  <h1>RESPONDENT</h1>
-  <div class="respondent">
+  <div class="respondent_column"> 
+  <h1>All surveys</h1>
     <!-- VIEW SURVEYS TO TAKE -->
     <table>
       <% @surveys.each do |survey| %>
