@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
-  include BCrypt
-  has_many :urls
+  has_many :answerers
 
-  validates_uniqueness_of :email, :message => "You're already signed up."
-  validates :email, :presence => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+
+  include BCrypt
+ 
+
+  validates_uniqueness_of :username, :message => "You're already signed up."
+  validates :username, :presence => true
   validates_presence_of :password, :message => "You need a password."
 
   def password
@@ -15,8 +18,8 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  def self.authenticate(email, password)
-    user = User.find_by_email(email)
+  def self.authenticate(username, password)
+    user = User.find_by_username(username)
     if user && user.password == password
       user
     else
