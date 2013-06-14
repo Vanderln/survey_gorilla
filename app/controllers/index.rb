@@ -3,11 +3,13 @@ get '/' do
 end
 
 post '/login' do
-  # authenticate?
-  # start new session
-  # session[:user_id] = @user.id
-  # direct to user page
-  redirect '/users/:user_id'
+  user = User.authenticate(params[:username],params[:password])
+  if user.valid?
+    session[:user_id] = user.id
+    redirect '/users/:user_id'
+  else
+    redirect '/login'
+  end
 end
 
 post '/signup' do
