@@ -5,5 +5,8 @@ class Choice < ActiveRecord::Base
   has_many :respondents, :through => :responses,
            :class_name => "User",
            :foreign_key => :user_id
+           
+  validate :content, :presence => true
+
   
 end
