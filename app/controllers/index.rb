@@ -24,3 +24,5 @@ get '/users/:user_id' do
   # if logged in render user page
   erb :user_page
 end
+
+

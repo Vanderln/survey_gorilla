@@ -1,0 +1,27 @@
+<div class="container">
+<div class="author"><h2>Authors</h2>
+<% current_user.surveys.each do |survey| %>
+ <%= erb :_survey, :layout => false, :locals => { survey: survey }  %>
+<% end %>
+ <form action="/create" method="post">
+
+ </form>
+
+
+
+ 
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="respondent">
+  
+</div>
+</div>
