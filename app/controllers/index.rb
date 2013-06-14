@@ -21,11 +21,13 @@ post '/signup' do
 end
 
 get '/users/:user_id' do
-  # validate user is logged in?
-  # redirect to login if not
-  # if logged in render current session user page
-  @surveys = Survey.order('updated_at DESC')
-  erb :user_page
+  if logged_in?
+    @author_surveys = Survey.find_all_by_user_id(current_user.id)
+    @all_surveys = Survey.order('updated_at DESC')
+    erb :user_page
+  else
+    redirect '/login'
+  end
 end
 
 get '/create' do

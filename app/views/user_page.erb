@@ -1,26 +1,28 @@
 <div class="container">
 
   <!-- AUTHOR COLUMN -->
+  <h1>AUTHOR</h1>
   <div class="author">
     <!-- CREATE NEW SURVEY -->
     <form action="/create" method="get">
-      <input type='submit'>
+      <input type='submit' value="create new survey">
     </form>
    <!-- VIEW SURVEYS AUTHORED -->
     <table>
-      <% current_user.surveys.each do |survey| %>
+      <% @author_surveys.each do |survey| %>
         <tr>
           <%= erb :_survey_render, :layout =>  false, :locals => { survey: survey } %>
         </tr>
       <% end %>
-    </table>
+    </table>  
   </div>
 
   <!-- RESPONDENT COLUMN -->
+  <h1>RESPONDENT</h1>
   <div class="respondent">
     <!-- VIEW SURVEYS TO TAKE -->
     <table>
-      <% @surveys.each do |survey| %>
+      <% @all_surveys.each do |survey| %>
         <tr>
           <%= erb :_survey_render, :layout =>  false, :locals => { survey: survey } %>
         </tr>
