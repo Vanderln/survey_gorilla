@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :answerers
+  has_many :respondents
+  has_many :surveys, :through => :respondents
+  has_many :responses
+  has_many :choices, :through => :responses
 
 
   include BCrypt
