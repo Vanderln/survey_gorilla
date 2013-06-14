@@ -1,4 +1,4 @@
 <td>
-  <p class='title'><strong><%= survey.title %></strong></p>
+  <p class='title'><strong><a href="/surveys/<%= survey.id.to_i %>"><%= survey.title %></a></strong></p>
   <p class='author'>by <%= survey.author.username %></p>
 </td>

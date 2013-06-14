@@ -4,29 +4,32 @@ end
 
 post '/login' do
   user = User.authenticate(params[:username],params[:password])
-  if user.valid?
+  if user
+    session.clear
     session[:user_id] = user.id
     redirect '/users/:user_id'
   else
-    redirect '/login'
+    redirect '/'
   end
 end
 
 post '/signup' do
-  # validate and enter new user into DB
-  # start new session
-  # direct to user page
-  # session[:user_id] = @user.id
-  redirect '/users/:user_id'
+  user = User.new(params[:form])
+  if user.save
+    session.clear
+    session[:user_id] = user.id
+    redirect '/users/:user_id'
+  else
+    redirect '/'
+  end
 end
 
 get '/users/:user_id' do
   if logged_in?
-    @author_surveys = Survey.find_all_by_user_id(current_user.id)
-    @all_surveys = Survey.order('updated_at DESC')
+    @surveys = Survey.order('updated_at DESC')
     erb :user_page
   else
-    redirect '/login'
+    redirect '/'
   end
 end
 

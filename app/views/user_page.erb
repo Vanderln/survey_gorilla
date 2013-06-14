@@ -9,9 +9,9 @@
     </form>
    <!-- VIEW SURVEYS AUTHORED -->
     <table>
-      <% @author_surveys.each do |survey| %>
+      <% @surveys.find_all_by_user_id(current_user.id).each do |survey| %>
         <tr>
-          <%= erb :_survey_render, :layout =>  false, :locals => { survey: survey } %>
+          <%= erb :_survey_render, :layout => false, :locals => { survey: survey } %>
         </tr>
       <% end %>
     </table>  
@@ -22,9 +22,9 @@
   <div class="respondent">
     <!-- VIEW SURVEYS TO TAKE -->
     <table>
-      <% @all_surveys.each do |survey| %>
+      <% @surveys.each do |survey| %>
         <tr>
-          <%= erb :_survey_render, :layout =>  false, :locals => { survey: survey } %>
+          <%= erb :_survey_render, :layout => false, :locals => { survey: survey } %>
         </tr>
       <% end %>
     </table>
