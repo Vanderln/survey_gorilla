@@ -1,5 +1,9 @@
 get '/' do
-  erb :index
+  if logged_in?
+    redirect "/users/#{current_user.id}"
+  else
+    erb :index
+  end
 end
 
 post '/login' do
@@ -22,6 +26,11 @@ post '/signup' do
   else
     redirect '/'
   end
+end
+
+get '/logout' do
+  session.clear
+  redirect '/'
 end
 
 get '/users/:user_id' do
