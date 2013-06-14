@@ -1,26 +1,22 @@
 <div class="container">
-<div class="author"><h2>Authors</h2>
-<% current_user.surveys.each do |survey| %>
- <%= erb :_survey_render, :layout => false, :locals => { survey: survey }  %>
-<% end %>
- <form action="/create" method="get">
-  <input type='submit'>
- </form>
 
-
-
- 
-
-
-
-
-
-
-
-
+<!-- AUTHOR COLUMN -->
+<div class="author">
+  <!-- CREATE NEW SURVEY -->
+  <form action="/create" method="get">
+    <input type='submit'>
+  </form>
+ <!-- VIEW YOUR SURVEYS -->
+  <table>
+    <% current_user.surveys.each do |survey| %>
+      <tr>
+        <%= erb :_survey_render, :layout => false, :locals => { survey: survey }  %>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
-
+<!-- RESPONDENT COLUMN -->
 <div class="respondent">
   
 </div>
