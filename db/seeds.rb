@@ -23,3 +23,4 @@ end
 users.each do |user|
   user.responses << Response.create(:choice_id => 1 + rand(100), :user_id 1 + rand(10))
 end
+ 
