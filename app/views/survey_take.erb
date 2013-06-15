@@ -1,0 +1,20 @@
+<div class="survey_questions">
+  <%= erb :_survey_render, :layout => false, :locals => { survey: @survey } %>
+  <form action="/surveys/<%= @survey.id %>" method="post">
+      <table>
+        <% @survey.questions.each do |question| %>
+          <tr>
+            <p class="question_content">
+              <%= question.content %>
+            </p>
+            <% question.choices.each do |choice| %>
+              <input type='radio' name="<%= question.id %>" value="<%= choice.id %>"><%= choice.content %><br>
+            <% end %>
+          </tr>
+        <% end %>
+
+      </table>
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    <input type='submit' value="Submit Survey">
+  </form>
+</div>

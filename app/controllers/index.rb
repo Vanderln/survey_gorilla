@@ -53,12 +53,16 @@ post '/create' do
 end
 
 get '/surveys/:survey_id' do
-  # render survey as form to answer
+  @survey = Survey.find(params[:survey_id])
   erb :survey_take
 end
 
 post '/surveys/:survey_id' do
-  # submit survey form under current user session
+  survey = Survey.find(params[:survey_id])
+  Respondent.create({:user_id => params[:user_id], :survey_id => survey.id})
+  survey.questions.each do |question|
+     Response.create({:user_id => params[:user_id], :choice_id => params["#{question.id}"]})
+  end
   redirect '/users/:user_id'
 end
 
