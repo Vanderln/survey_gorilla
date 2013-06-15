@@ -48,8 +48,10 @@ get '/create' do
 end
 
 post '/create' do
+  p params.inspect
+  # "success"
   # create new survey with current user session
-  redirect '/users/:user_id'
+  # redirect '/users/:user_id'
 end
 
 get '/surveys/:survey_id' do
