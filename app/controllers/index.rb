@@ -43,15 +43,23 @@ get '/users/:user_id' do
 end
 
 get '/create' do
-  # render form to author new survey
-  erb :survey_create
+  if logged_in?
+    erb :survey_create
+  else
+    redirect '/'
+  end
 end
 
 post '/create' do
-  p params.inspect
-  # "success"
-  # create new survey with current user session
-  # redirect '/users/:user_id'
+  survey = Survey.create(:title => params.shift[1], :user_id => current_user.id)
+  while kvp = params.shift do
+    if kvp[0].start_with?("q")
+      survey.questions << latest_question = Question.create(:content => kvp[1])
+    else
+      latest_question.choices << Choice.create(:content => kvp[1])
+    end
+  end
+  redirect "/users/#{current_user.id}"
 end
 
 get '/surveys/:survey_id' do

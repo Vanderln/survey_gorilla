@@ -1,55 +1,47 @@
-
 $(document).ready(function () {
     var $questionField = $('#questionField');
     var $form = $('form#myForm');
-    var i = $('#myForm input').size() + 1;
-    var j = $('#questionField div').size();
-    var z = 100;
+    var $inputElements = $('#myForm input').size();
+    var $questionElements = $('#questionField textarea').size();
     
-    
-    
-    $('form').on('click', 'a.addField', function (e) {
+    $('form').on('click', 'a.addField', function(e) {
         e.preventDefault();
-        var field = '<p><label>Choice<label><input type="text" name="post[cnew' + i +']" placeholder="choice"/><a href="#" class="removeField">delete this choice</a></p>';
+        var field = '<p><label>Choice<label><input type="text" name="choice '+ $inputElements +'" placeholder="choice"/><a href="#" class="removeField">delete this choice</a></p>';
         $(this).closest('.question').append(field);
-        i++;
-        console.log(z);
+        $inputElements++;
         return false;
     });
 
-    $('form').on('click', 'a.removeField', function (e) {
+    $('form').on('click', 'a.removeField', function(e) {
         e.preventDefault();
-        $(this).parent().parent().remove();
+        $(this).closest('p').remove();
+        $inputElements--;
         return false;
     });
 
-    $('a.addQuestion').on('click', function (e) {
+    $('a.addQuestion').on('click', function(e) {
         e.preventDefault();
-        var question = '<div class="question"><p><label>Question<label><textarea rows="5" cols="50" name="post[qnew' + i + ']"></textarea></p><a href="#" class="removeQuestion" >Remove Question!</a><a href="#" class="addField" >Add choice!</a> <p><label>Choice<label><input type="text" name="post[cnew' + i + ']" placeholder="choice"></p></div>'
-        // $('#sub_form').remove();
-        
+        var question = '<div class="question"><p><label>Question<label><textarea rows="5" cols="50" name="question'+ $inputElements +' "></textarea></p><a href="#" class="removeQuestion" >Remove Question!</a><a href="#" class="addField" >Add choice!</a></div>'
         $(question).appendTo($questionField);
-        i++;
-        j++;
-        z--;
+        $questionElements++;
         return false;
     });
 
-    $('form').on('click', 'a.removeQuestion', function (e) {
+    $('form').on('click', 'a.removeQuestion', function(e) {
         e.preventDefault();
-        if (j > 1) {
-            $(this).closest('.question').remove();
-            j--;
-        }
+        $(this).closest('.question').remove();
+        $questionElements--;
         return false;
     });
 
-    $('sub_form').on('submit', function(e){
-      e.preventDefault();
-      var data = $(this).serialize();
-      $.post('/create', data, function(response){
-        console.log(response);
-      });
+    $('form#myForm').on('submit', function(e) {
+      if ($questionElements >= 1 && $inputElements >= 4) {
+        var data = $(this).serialize();
+        $.post('/create', data );
+      } else { 
+        e.preventDefault();
+        alert('Surveys must have at least 1 question and 2 choices!') 
+      }
     });
 
 
