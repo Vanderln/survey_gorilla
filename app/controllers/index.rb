@@ -35,6 +35,7 @@ end
 
 get '/users/:user_id' do
   if logged_in?
+    @my_surveys = Survey.find_all_by_user_id(current_user.id)
     @surveys = Survey.order('updated_at DESC')
     erb :user_page
   else
@@ -45,6 +46,15 @@ end
 get '/create' do
   if logged_in?
     erb :survey_create
+  else
+    redirect '/'
+  end
+end
+
+get "/surveys/results/:survey_id" do
+  @survey = Survey.find_by_id(params[:survey_id])
+  if current_user.id == @survey.user_id
+    erb :survey_results
   else
     redirect '/'
   end
@@ -74,12 +84,6 @@ post '/surveys/:survey_id' do
      Response.create({:user_id => params[:user_id], :choice_id => params["#{question.id}"]})
   end
   redirect '/users/:user_id'
-end
-
-get '/surveys/stats/:survey_id' do
-  # render survey title, questions, and choices
-  # also render number of responses for each choice
-  erb :survey_stats
 end
 
 

@@ -3,9 +3,12 @@
  <div class="author_column">
   <h1>My surveys</h1>
     <table>
-      <% @surveys.find_all_by_user_id(current_user.id).each do |survey| %>
+      <% @my_surveys.each do |survey| %>
         <tr>
           <%= erb :_survey_render, :layout => false, :locals => { survey: survey } %>
+          <td>
+            <a href="/surveys/results/<%= survey.id %>">Results</a>
+          </td>
         </tr>
       <% end %>
     </table>  
