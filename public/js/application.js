@@ -34,7 +34,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $('form#myForm').on('submit', function(e) {
+    $('.button_new_survey').on('submit', function(e) {
       if ($questionElements >= 1 && $inputElements >= 4) {
         var data = $(this).serialize();
         $.post('/create', data );
