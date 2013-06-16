@@ -1,29 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/application.css">
-  <link rel="stylesheet" href="/css/waves.css">
-<script src="//use.edgefonts.net/poiret-one.js"></script>
-<script src="//use.edgefonts.net/muli:n3,n4.js"></script>
-  <title>Survey Octopus</title>
-</head>
-<body>
-  <nav>
-    <span class="brand"><img src="/img/octopus.gif" height="80" border="0"><a href="/">Survey Octopus</a></span>
-    <ul id="session-controls">
-      <% unless logged_in? %>
-        <li><a href="/">Login</a></li>
-      <% end %>
-      <% if logged_in? %>
-        <li><a href="/logout">Logout</a></li>
-      <% end %>
-    </ul>
-  </nav>
-  <%= yield %>
-  <footer><!--<img src="/img/starfish.png" height="200" border="0">-->
 <div id="wavecontainer">
     <div class="waves fore">
       <div class="waveleft"><div class="inner"></div></div>
@@ -49,19 +23,6 @@
       <div class="waveleft"><div class="inner"></div></div>
       <div class="waveright"><div class="inner"></div></div>
       <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-
     </div>
     <div class="waves back">
       <div class="waveright"><div class="inner"></div></div>
@@ -86,28 +47,5 @@
       <div class="waveleft"><div class="inner"></div></div>
       <div class="waveright"><div class="inner"></div></div>
       <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
-      <div class="waveright"><div class="inner"></div></div>
-      <div class="waveleft"><div class="inner"></div></div>
     </div>
-  
     </div>
-
-
-
-
-  </footer>
-  <!-- JavaScript -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
-</body>
-</html>

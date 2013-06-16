@@ -13,11 +13,11 @@ a {
 a:hover {
   text-decoration: none;
   font-style: oblique;
-  color: #abc6e8;
+  color: #FFF;
 }
 
 nav {
-  background-color: white;
+  background-color: #ABC6E8;
   width: 100%;
   font-family: poiret-one, sans-serif;
   font-size: 14px;
@@ -43,6 +43,10 @@ nav ul {
   float: right;
   margin: 30px 25px 0 0;
   padding: 0 0 0 0;
+}
+
+nav li {
+ list-style-type: none;
 }
 
 body{
@@ -139,3 +143,14 @@ td.survey_list {
   padding: 8px 0;
 }
 
+.survey_questions {
+  width: 80%;
+  margin: 10px auto;
+}
+
+footer {
+/*    position: fixed;
+    bottom: 0;
+    right: 0;*/
+/*    height: 150px;*/
+}
