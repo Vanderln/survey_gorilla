@@ -1,14 +1,14 @@
 <div class="container">
-  <div id='controls'>
-    <a href='#' class="addQuestion" >Add Question!</a>
-       
-  </div>
+ <div class="creation">
   <form id="myForm" action="/create" method="post">
-
-    <p><label> Title</label></p>
-    <p><input type="text" name="title" placeholder="title" autofocus required=true></p>
-    <input type='submit' value='create survey'>
+    <div class="create_title"><label>Enter title:</label>
+    <input type="text" name="title" placeholder="Title" autofocus required=true></div>
+    <div id='controls'><a href='#' class="addQuestion" >Add Question!</a>
+    </div>
     <div id="questionField">
     </div>
+    <div class="button_new_survey"><input type='submit' value='Create'></div>
   </form>
 </div>
+</div>
+

@@ -79,7 +79,7 @@ body{
   width:175px;
 }
 
-.container div input[type=submit]{
+input[type=submit]{
   background: #487cbf;
   padding: 10px 20px 7px 20px;
   border-bottom: 6px solid #29476D;
@@ -93,7 +93,7 @@ body{
   width: 90px;
 }
 
-.container div input[type=submit]:hover{
+input[type=submit]:hover{
   background-color: #a67aaf;
   color: white;
 }
@@ -168,29 +168,19 @@ td.survey_list {
   font-size: 14px;
 }
 
-.create_title {
-  font-size: 16px;
-  color: #487cbf;
-
+.create_form {
+  width: 40%;
+  margin: 10px auto;
 }
 
-.question label {
-  font-size: 14px;
-  color: #487cbf;
+.create_submit_btn {
+  float: right;
 }
 
-.button_new_survey {
-  position: fixed;
-  bottom:10;
-}
 
-.creation a:link {
-  color: red;
-  text-transform: uppercase;
+/*.question textarea {
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-
-.creation input[type=text] {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
+*/

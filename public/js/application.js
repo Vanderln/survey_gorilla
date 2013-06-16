@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     $('a.addQuestion').on('click', function(e) {
         e.preventDefault();
-        var question = '<div class="question"><p><label>Question<label><textarea rows="5" cols="50" name="question'+ $inputElements +' "></textarea></p><a href="#" class="removeQuestion" >Remove Question!</a><a href="#" class="addField" >Add choice!</a></div>'
+        var question = '<div class="question"><label>Question: <label><textarea rows="5" cols="50" name="question'+ $inputElements +' "></textarea><div class="remove_or_add"><a href="#" class="removeQuestion" >Remove Question! </a><a href="#" class="addField" >Add choice!</a></div></div>'
         $(question).appendTo($questionField);
         $questionElements++;
         return false;
